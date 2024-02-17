@@ -1,4 +1,7 @@
 onNet('nrm-clothing:client:server:sendPlayerClothing', async (pedData: string) =>
 {
-    console.log(pedData)
+    const pNetId = global.source
+    const cid = await global.exports["nrm-lib"].getPlayerCid(pNetId);
+
+    console.log(cid);
 });
