@@ -17,3 +17,9 @@ interface getPlayerOutfitByCidRes
 {
     outfit: string;
 }
+
+interface ClothingStore 
+{
+    coords: Vector;
+    name: string;
+}

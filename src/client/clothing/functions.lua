@@ -102,7 +102,6 @@ getOutfit = function()
 end
 
 changeVariation = function(component, drawable, texture)
-    print(component, drawable, texture)
     local ped = PlayerPedId()
 
     RequestModel('mp_m_freemode_01')

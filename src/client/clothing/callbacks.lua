@@ -27,6 +27,9 @@ RegisterNUICallback('closeShop', function(data, cb)
         return
     end
 
+    TriggerServerEvent('nrm-clothing:client:server:restorePlayerClothing', currentOutfit);
+    currentOutfit = {}
+
     exports['nrm-lib'].showNotify(nil, 'Kledingwinkel', 'error', 'Je kleding is terug hersteld naar het origineel!', 5000);
 
     cb(true)

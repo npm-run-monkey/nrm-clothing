@@ -1,3 +1,6 @@
+import Vector from "stores/classes/Vector";
+import { isInClothingStore } from "../stores/functions";
+
 const Delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
 onNet('nrm-clothing:client:server:sendPlayerClothing', async (pedData: string) =>
@@ -47,3 +50,34 @@ onNet('nrm-lib:client:server:playerSpawned', async (player: number) =>
         console.log(`An error occurred: ${e}`);
     }
 });
+
+onNet('nrm-clothing:client:server:checkClothingStore', async () =>
+{
+    const pNetId = global.source;
+    const ped = GetPlayerPed(pNetId.toString());
+    const coords = GetEntityCoords(ped);
+    const pCoords: Vector = new Vector(coords[0], coords[1], coords[2]);
+
+    try
+    {
+        const inStore = await isInClothingStore(pCoords);
+
+        if (inStore)
+        {
+            emitNet('nrm-clothing:server:client:openClothingMenu', pNetId);
+            return;
+        }
+    
+        console.log(`Player (${pNetId}) is in no clothing zone ...`);
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+});
+
+onNet('nrm-clothing:client:server:restorePlayerClothing', (outfit: string) =>
+{
+    const pNetId = global.source;
+    global.exports['nrm-clothing'].setPlayerOutfit(pNetId, JSON.parse(outfit))
+})

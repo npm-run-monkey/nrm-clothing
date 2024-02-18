@@ -42,7 +42,7 @@ dependencies {
 
 ui_page 'nui/web/build/index.html'
 
-client_script 'src/client/**/*.lua'
+client_scripts { 'src/client/**/*.lua' }
 server_script 'bin/server.js'
 
 files {

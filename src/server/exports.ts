@@ -43,7 +43,7 @@ global.exports('getPlayerOutfitByCid', (cid: string): Promise<OutfitComponent[]>
     })
 });
 
-global.exports('setPlayerOutfit', (pNetId: number, outfit: OutfitComponent[]) =>
+global.exports('setPlayerOutfit', (pNetId: number, outfit: OutfitComponent[]): void =>
 {
     const ped = GetPlayerPed(pNetId.toString());
 

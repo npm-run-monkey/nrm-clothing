@@ -1,15 +1,9 @@
-local function toggleNuiFrame(shouldShow)
-  SetNuiFocus(shouldShow, shouldShow)
-  SendReactMessage('setVisible', shouldShow)
+local function roundToTwoDecimals(num)
+  return math.floor(num * 100 + 0.5) / 100
 end
 
-RegisterCommand('show-nui', function()
-  toggleNuiFrame(true)
-  debugPrint('Show NUI frame')
-end)
+RegisterCommand('coords', function()
+  local coords = GetEntityCoords(GetPlayerPed(-1))
 
-RegisterNUICallback('hideFrame', function(_, cb)
-  toggleNuiFrame(false)
-  debugPrint('Hide NUI frame')
-  cb({})
+  print(roundToTwoDecimals(coords.x), roundToTwoDecimals(coords.y), roundToTwoDecimals(coords.z, 2))
 end)

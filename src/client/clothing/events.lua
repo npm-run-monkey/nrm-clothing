@@ -1,10 +1,13 @@
-RegisterNetEvent('nrm-clothing:client:client:openClothingMenu')
+currentOutfit = {}
 
-AddEventHandler('nrm-clothing:client:client:openClothingMenu', function()
+RegisterNetEvent('nrm-clothing:server:client:openClothingMenu')
+
+AddEventHandler('nrm-clothing:server:client:openClothingMenu', function()
     local promise = getOutfit()
 
     Citizen.CreateThread(function()
         promise(function(pedData)
+            currentOutfit = pedData
             SetNuiFocus(true, true)
             SendNUIMessage({
                 action = 'openShop',
@@ -28,6 +31,8 @@ AddEventHandler('nrm-clothing:client:client:savePlayerClothing', function()
     end)
 end)
 
-RegisterCommand('open', function()
-    TriggerEvent('nrm-clothing:client:client:openClothingMenu')
+RegisterKeyMapping('openClothing', 'Check if the player is in any clothing zone', 'keyboard', 'e');
+
+RegisterCommand('openClothing', function()
+    TriggerServerEvent('nrm-clothing:client:server:checkClothingStore')
 end)
