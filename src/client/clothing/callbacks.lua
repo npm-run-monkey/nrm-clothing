@@ -22,8 +22,12 @@ RegisterNUICallback('closeShop', function(data, cb)
     SetNuiFocus(false, false)
 
     if (buy) then
-        TriggerEvent('nrm-clothing:client:client:savePlayerClothing')
+        TriggerEvent('nrm-clothing:client:client:savePlayerClothing');
+        exports['nrm-lib'].showNotify(nil, 'Kledingwinkel', 'succes', 'Je kleding is Opgeslagen!', 5000);
+        return
     end
+
+    exports['nrm-lib'].showNotify(nil, 'Kledingwinkel', 'error', 'Je kleding is terug hersteld naar het origineel!', 5000);
 
     cb(true)
 end)
