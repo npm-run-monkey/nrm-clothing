@@ -36,6 +36,8 @@ game 'gta5'
 dependencies {
     '/server:7290',
     '/onesync',
+    'nrm-db',
+    'nrm-lib'
 }
 
 ui_page 'nui/web/build/index.html'
