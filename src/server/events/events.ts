@@ -1,5 +1,4 @@
 import Vector from "stores/classes/Vector";
-import { isInClothingStore } from "../stores/functions";
 
 const Delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
@@ -51,30 +50,30 @@ onNet('nrm-lib:client:server:playerSpawned', async (player: number) =>
     }
 });
 
-onNet('nrm-clothing:client:server:checkClothingStore', async () =>
-{
-    const pNetId = global.source;
-    const ped = GetPlayerPed(pNetId.toString());
-    const coords = GetEntityCoords(ped);
-    const pCoords: Vector = new Vector(coords[0], coords[1], coords[2]);
+// onNet('nrm-clothing:client:server:checkClothingStore', async () =>
+// {
+//     const pNetId = global.source;
+//     const ped = GetPlayerPed(pNetId.toString());
+//     const coords = GetEntityCoords(ped);
+//     const pCoords: Vector = new Vector(coords[0], coords[1], coords[2]);
 
-    try
-    {
-        const inStore = await isInClothingStore(pCoords);
+//     try
+//     {
+//         const inStore = await isInClothingStore(pCoords);
 
-        if (inStore)
-        {
-            emitNet('nrm-clothing:server:client:openClothingMenu', pNetId);
-            return;
-        }
+//         if (inStore)
+//         {
+//             emitNet('nrm-clothing:server:client:openClothingMenu', pNetId);
+//             return;
+//         }
     
-        console.log(`Player (${pNetId}) is in no clothing zone ...`);
-    }
-    catch(e)
-    {
-        console.log(e);
-    }
-});
+//         console.log(`Player (${pNetId}) is in no clothing zone ...`);
+//     }
+//     catch(e)
+//     {
+//         console.log(e);
+//     }
+// });
 
 onNet('nrm-clothing:client:server:restorePlayerClothing', (outfit: string) =>
 {

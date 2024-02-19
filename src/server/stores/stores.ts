@@ -1,9 +1,10 @@
-import Vector from "./classes/Vector";
-
 export const stores: ClothingStore[] = 
 [
     {
-        coords: new Vector(457.77, 261.11, 103.2),
-        name: "test"
+        x: -164.76,
+        y: -302.09, 
+        z: 39.73,
+        name: "test2",
+        model: "a_f_m_tramp_01"
     }
 ];

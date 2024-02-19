@@ -1,17 +1,9 @@
-import Vector from "./classes/Vector";
 import { stores } from "./stores";
 
-export const isInClothingStore = (pCoords: Vector): Promise<boolean> =>
+setImmediate(() =>
 {
-    return new Promise((res, rej) =>
+    stores.forEach((store) =>
     {
-        stores.forEach(store =>
-        {
-            if (store.coords.distanceTo(pCoords) < 1.5)
-            {
-                res(true);
-            }
-        });
-        rej(`[Func isInClothingStore] - Not in any clothing store ...`);
+        global.exports["nrm-lib"].constructPed(store.model, store.x, store.y, store.z, 360, "nrm-clothing:client:client:openClothingMenu");
     });
-}
+});

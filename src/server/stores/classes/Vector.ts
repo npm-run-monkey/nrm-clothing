@@ -11,6 +11,12 @@ class Vector
         this.z = z;
     }
 
+    public getX = () => this.x;
+
+    public getY = () => this.y;
+
+    public getZ = () => this.z;
+
     public distanceTo(other: Vector): number
     {
         const dx = this.x - other.x;

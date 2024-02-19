@@ -31,8 +31,15 @@ AddEventHandler('nrm-clothing:client:client:savePlayerClothing', function()
     end)
 end)
 
-RegisterKeyMapping('openClothing', 'Check if the player is in any clothing zone', 'keyboard', 'e');
+RegisterNetEvent('nrm-clothing:client:client:openClothingMenu')
 
-RegisterCommand('openClothing', function()
-    TriggerServerEvent('nrm-clothing:client:server:checkClothingStore')
+AddEventHandler('nrm-clothing:client:client:openClothingMenu', function()
+    print(true)
+    TriggerEvent('nrm-clothing:server:client:openClothingMenu');
 end)
+
+-- RegisterKeyMapping('openClothing', 'Check if the player is in any clothing zone', 'keyboard', 'e');
+
+-- RegisterCommand('openClothing', function()
+--     TriggerServerEvent('nrm-clothing:client:server:checkClothingStore')
+-- end)
