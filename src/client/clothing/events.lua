@@ -43,3 +43,9 @@ end)
 -- RegisterCommand('openClothing', function()
 --     TriggerServerEvent('nrm-clothing:client:server:checkClothingStore')
 -- end)
+
+RegisterNetEvent('nrm-clothing:server:client:cutie')
+
+AddEventHandler('nrm-clothing:server:client:cutie', function()
+    exports['nrm-lib'].showNotify(nil, 'Kledingwinkel', 'succes', 'Hey daar cutie, zal ik mn kleren uitdoen?', 5000);
+end)

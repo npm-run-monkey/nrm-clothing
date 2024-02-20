@@ -23,6 +23,13 @@ interface ClothingStore
     x: number;
     y: number;
     z: number;
+    h: number;
     name: string;
     model: string;
+}
+
+interface Entry
+{
+    name: string;
+    event: string;
 }
